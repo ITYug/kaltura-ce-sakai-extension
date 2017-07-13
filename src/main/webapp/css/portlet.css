@@ -1,0 +1,317 @@
+/**
+ * Copyright 2010 Unicon (R) Licensed under the
+ * Educational Community License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
+ *
+ * http://www.osedu.org/licenses/ECL-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS"
+ * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+/* Portlet */
+.portlet {padding:1em 0; color:#627D79;}
+
+/* Decorators */
+.portlet .hide {display:none !important;}
+/*.portlet .highlight {background-color:#F5FFFA; border-color:#ff0000; color:#000;}
+.portlet .highlight form input[type='text'] {border:1px solid #ff9900;}*/
+.portlet .emphasis {font-size:120%; font-weight:bold;}
+
+/* Columns */
+.portlet .columns2 .column,
+.portlet .columns3 .column,
+.portlet .columns4 .column {float:left; display:inline;}
+
+/* Views */
+.portlet .portlet-views {}
+.portlet .portlet-views > .tabs {}
+.portlet .portlet-views > .content {padding:1em; border:1px solid #ccc; border-top:none;}
+
+/* Actions */
+.portlet .actions ul {margin:0; padding:0; overflow:hidden; zoom:1;} 
+.portlet .actions li {list-style-type:none; float:left; display:inline; padding:0 5px 0 5px; margin-left:-5px;}
+
+/* Titlebar */
+.portlet .titlebar {position:relative; margin-bottom:1em;}
+.portlet .titlebar .breadcrumb {margin-bottom:0.5em; font-size:12px; color:#ccc;}
+.portlet .titlebar .breadcrumb .separator {font-size:90%;}
+.portlet .titlebar .breadcrumb a {color:#bbb; font-weight:normal; text-decoration:none;}
+.portlet .titlebar .breadcrumb a:hover {color:#999; text-decoration:underline;}
+.portlet .titlebar > .options {padding:0.5em 0; border-top:1px solid #ccc;}
+.portlet .titlebar ul {margin:0; padding:0; overflow:hidden; zoom:1;} 
+.portlet .titlebar li {list-style-type:none; float:left; display:inline; padding:5px; margin-left:-5px;}
+.portlet .titlebar .actions,
+.portlet .titlebar .return-link {position:absolute; top:0; right:0;}
+.portlet .titlebar .return-link {top:0.3em;}
+.portlet .titlebar  .breadcrumb~.return-link {top:1.8em;}
+.portlet .titlebar .actions li {border:none;}
+.portlet .titlebar .return-link {font-weight:bold; text-decoration:none !important;}
+.portlet .titlebar .toolbar {padding:0 5px; background-color:#e2e8e7; border-top:1px solid #ccc;}
+.portlet .titlebar .toolbar ul {margin:0; padding:0; overflow:hidden; zoom:1;}
+.portlet .titlebar .toolbar ul li {}
+.portlet .titlebar .toolbar .search {text-align:right;}
+.portlet .titlebar .tags {padding-bottom:0.5em;}
+.portlet .titlebar .details {font-size:85%;}
+.portlet .titlebar .details .detail,
+.portlet .titlebar .details .label {display:inline;}
+.portlet .titlebar .details .detail~.detail {padding-left:1.5em;}
+.portlet .titlebar .details .sysid .name {font-family:"Courier New", Courier, monospace;}
+.portlet .titlebar .details a {font-weight:normal; margin:0;}
+.portlet .portlet-titlebar > .title {padding:0 0 0.2em 0; margin:0; font-size:150%; border-bottom:1px solid #ccc;}
+.portlet .portlet-titlebar > .subtitle {margin:0 0 1em 0; padding-top:0.4em; font-size:120%; border-top:2px solid #ccc;}
+
+
+/* Tags */
+.portlet .tags {}
+.portlet .tags .label {display:inline; font-size:100%;}
+.portlet .tags a {font-weight:normal; margin:0;}
+
+/* Content */
+.portlet .portlet-content {zoom:1; margin:5px 0 0 0; overflow: auto;}
+
+/* Messages */
+.portlet .portlet-msg {
+	margin-bottom:1em;
+	padding:0.5em;
+	border:1px solid #FFFF00;
+	color:#666;
+	background:#FFFFCC url(../images/icons/bell.png) 0.5em 0.3em no-repeat;
+	background:-moz-linear-gradient(0% 100% 90deg, #FFFFCC, #fff);
+}
+.portlet .portlet-msg .titlebar {margin:0;}
+.portlet .portlet-msg .title {margin:0 0 5px 0;}
+.portlet .portlet-msg .content {}
+.portlet .portlet-msg .content p {margin:0 0 5px 0}
+.portlet .portlet-msg.status {}
+.portlet .portlet-msg.info {
+	color:#26425E;
+	border-color:#3399ff;
+	background:#99ccff;
+	background:-moz-linear-gradient(0% 100% 90deg, #99ccff, #fff);
+}
+.portlet .portlet-msg.info .title,
+.portlet .portlet-msg.info .content {padding-left:2em;}
+.portlet .portlet-msg.info .title {color:#004284; background:transparent url(../images/icons/information.png) 0.5em 0em no-repeat;}
+.portlet .portlet-msg.info .content {}
+.portlet .portlet-msg.error {
+	color:#f00;
+	border-color:#cc0000;
+	background:#ffeeee url(../images/icons/cross_circle.png) 0.5em 0.3em no-repeat;
+	background:-moz-linear-gradient(0% 100% 90deg, #ffeeee, #fff);
+}
+.portlet .portlet-msg.alert {
+	color:#000;
+	border-color:#FF6600;
+	background:#FFCC66 url(../images/icons/exclamation.png) 0.5em 0.3em no-repeat;
+	background:-moz-linear-gradient(0% 100% 90deg, #FFCC66, #fff);
+}
+.portlet .portlet-msg.success {
+	color:#000;
+	border-color:#009900;
+	background:#D1F0E0 url(../images/icons/tick_circle.png) 0.5em 0.3em no-repeat;
+	background:-moz-linear-gradient(0% 100% 90deg, #D1F0E0, #fff);
+}
+
+/* Notes */
+.portlet .portlet-content .note p {margin:0 1em 1em 1em;}
+
+/* Section */
+.portlet .portlet-section {margin-bottom:1em;}
+.portlet .portlet-section > .titlebar .title {margin:0; padding-top:1em; padding-bottom:0.2em; border-bottom:0.1em solid #ddd;}
+.portlet .portlet-section > .titlebar .options {padding:0.3em 0em; background-color:#fff; font-size:85%; text-align:right;}
+.portlet .portlet-section > .titlebar .options .view-filter {text-align:left;}
+.portlet .portlet-section > .titlebar .options > a {padding:0.1em 0.5em;}
+.portlet .portlet-section > .titlebar .options a {text-decoration:none; color:#666; border-bottom:1px solid #ddd;}
+.portlet .portlet-section > .titlebar .options a:hover {text-decoration:none; background-color:#dfefff; color:#000;}
+.portlet .portlet-section > .content {}
+.portlet .portlet-section > .content > .note {}
+
+/* Panel List */
+.portlet .portlet-panellist {margin-bottom:1em;}
+.portlet .portlet-panellist .column.first .inner {padding-right:1em;}
+.portlet .portlet-panellist .column.last .inner {padding-left:1em;}
+.portlet .portlet-panellist .panel {margin-bottom:1em; padding:0.5em; border-bottom:1px solid #ccc;}
+.portlet .portlet-panellist .panel-titlebar .title {margin:0; font-size:150%;}
+.portlet .portlet-panellist .panel-titlebar .title a {text-decoration:none !important;}
+.portlet .portlet-panellist .panel > .content {padding-bottom:1em; padding-left:1em;}
+
+/* Tables */
+.portlet table.portlet-table,
+.portlet table.portlet-table th,
+.portlet table.portlet-table td {border-width:1px; border-style:solid; border-color:#ccc; border-collapse:collapse;}
+.portlet table.portlet-table th,
+.portlet table.portlet-table td {padding:0.1em 1em;}
+.portlet table.portlet-table {border-width:2px;}
+.portlet th {background-color:#ddd; color:#666;}
+/* Add the "purpose-layout" class to any table you are using for layout purposes (i.e., no borders or colors on the table). */
+.portlet table.purpose-layout,
+.portlet table.purpose-layout th,
+.portlet table.purpose-layout td {margin:0; padding:0; border:none; background:none; background-color:transparent;}
+
+/* Forms */
+.portlet select,
+.portlet input[type="text"],
+.portlet input:not([type="submit"]),
+.portlet input:not([type="button"]),
+.portlet textarea,
+.dialog select,
+.dialog input[type="text"],
+.dialog input:not([type="submit"]),
+.dialog input:not([type="button"]),
+.dialog textarea {font-size:13px; font-family:"lucida grande",tahoma,verdana,arial,sans-serif; border:1px solid #BDC7D8; border-color:#96A6C5;}
+.portlet input[type="text"],
+.portlet input:not([type="submit"]),
+.portlet input:not([type="button"]),
+.dialog input[type="text"],
+.dialog input:not([type="submit"]),
+.dialog input:not([type="button"]) {background-color:#fff; background-image:-webkit-gradient(linear, 0% 0%, 0% 12%, from(#ccc), to(#fff)); background-image:-moz-linear-gradient(0% 12% 90deg, #fff, #ccc);}
+.portlet select:focus,
+.portlet input[type="text"]:focus,
+.portlet textarea:focus,
+.dialog select:focus,
+.dialog input[type="text"]:focus,
+.dialog textarea:focus {-webkit-box-shadow:0 0 12px rgba(51,204,255,.9); -moz-box-shadow:0 0 12px rgba(51,204,255,.9); box-shadow:0 0 12px rgba(51,204,255,.9);}
+.portlet form select,
+.portlet form input[type="text"],
+.portlet form textarea,
+.dialog form select,
+.dialog form input[type="text"],
+.dialog form textarea {padding:2px 3px; font-size:13px; font-family:"lucida grande",tahoma,verdana,arial,sans-serif; border:1px solid #BDC7D8; border-color:#96A6C5; margin-top:2px;}
+.portlet form select,
+.dialog form select {padding:1px !important;}
+/* dialog form layout */
+.dialog form label {display:block; float:left; margin-top:2px; padding:2px 3px; text-align:right; width:75px; font-size:13px; vertical-align:middle;}
+.dialog form input[type="text"] {width:150px;}
+.dialog form fieldset .row {clear:both;}
+.dialog form .instruction {margin-left:83px; font-size:80%;}
+
+/* styled portlet form*/
+.portlet-form {width:400px; padding:1em; background-color:#eee; border:1px solid #ccc;}
+.portlet-form form {margin:0;}
+.portlet-form form fieldset {border: 1px solid #ccc; padding:0.5em 1em;}
+.portlet-form form legend {margin-bottom:1em; font-size:85%; color:#ccc;}
+.portlet-form form table {}
+.portlet-form form table td {padding:0; border:none;}
+.portlet-form form table td.label {padding-right:3px; text-align:right; width:100px; font-size:11px; vertical-align:top; padding-top:5px;}
+.portlet-form form .field-container {display:inline-block; padding:1px; position:relative; width:auto;}
+.portlet-form form .inputtext,
+.portlet-form form .inputpassword {width:206px;}
+.portlet-form form .inputdate,
+.portlet-form form .inputtime {width:94px;}
+.portlet-form form .inputtime {margin-left:4px;}
+.portlet-form form .buttons {margin:0 0 0 105px; border:none;}
+
+/* Buttons */
+.portlet button,
+.portlet .button,
+.portlet form input[type="submit"],
+.portlet input[type="button"] {margin:0 2px; padding:2px 8px;}
+.portlet a.button {display:block; float:left;}
+.portlet .buttons {padding:1em 0;}
+.portlet .button:hover {cursor:pointer !important;}
+.portlet button,
+.portlet .button,
+.portlet input[type="submit"],
+.portlet input[type="button"] {
+	border-width:1px;
+	border-style:solid;
+	border-color:#999;
+	background:#ccc url(images/button_bkd.png) top left repeat-x; color:#fff;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#eee), to(#ccc)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #ccc, #eee);
+	font-size:10px;
+	font-weight:bold;
+	font-family:Verdana, Geneva, sans-serif;
+	text-transform:capitalize;
+	color:#333;
+	text-shadow:0 1px 1px rgba(255,255,255,.5);
+	-webkit-box-shadow:0 1px 2px rgba(0,0,0,.5); 
+	-moz-box-shadow:0 1px 2px rgba(0,0,0,.5);
+	box-shadow:0 1px 2px rgba(0,0,0,.5);
+}
+.portlet a.button {text-decoration:none !important;}
+/* Button group */
+.portlet .buttons {}
+.portlet .buttons .button {}
+.portlet .buttons .primary {
+	background-color:#aaa; 
+	border-color:#000; 
+	color:#000;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 70%, from(#999), to(#fff)); 
+	background-image:-moz-linear-gradient(0% 70% 90deg, #999, #fff);
+}
+.portlet .buttons a.button {}
+.portlet .buttons a.primary {}
+/* Hover and Focus */
+.portlet .button:hover,
+.portlet .button:focus,
+.portlet a.button:hover,
+.portlet a.button:focus,
+.portlet input[type="submit"]:hover,
+.portlet input[type="submit"]:focus,
+.portlet input[type="button"]:hover,
+.portlet input[type="button"]:focus {
+	border-color:#000;
+	background-color:#666; 
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#fff), to(#666)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #666, #fff);
+	cursor:pointer;
+	color:#fff;
+	text-shadow:0 -1px 1px rgba(0,0,0,.65);
+	-webkit-box-shadow:0 0 7px rgba(105,180,255,1);
+	-moz-box-shadow:0 0 7px rgba(105,180,255,1); 
+	box-shadow:0 0 7px rgba(105,180,255,1);
+}
+/* Titlebar buttons */
+.portlet .titlebar .toolbar .button,
+.portlet .titlebar .toolbar a.button {
+	border-color:#ccc;
+	background-color:#e2e8e7;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#fff), to(#e2e8e7)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #e2e8e7, #fff);
+	color:#555;
+	text-shadow:none;
+}
+.portlet .titlebar .toolbar .button:hover,
+.portlet .titlebar .toolbar .button:focus,
+.portlet .titlebar .toolbar a.button:hover,
+.portlet .titlebar .toolbar a.button:focus,
+.portlet .titlebar .toolbar input[type="submit"]:hover,
+.portlet .titlebar .toolbar input[type="submit"]:focus,
+.portlet .titlebar .toolbar input[type="button"]:hover,
+.portlet .titlebar .toolbar input[type="button"]:focus {
+	border-color:#000;
+	background-color:#666;
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#fff), to(#666)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #666, #fff);
+	color:#fff;
+	text-shadow:0 -1px 1px rgba(0,0,0,.5); 
+}
+/* Disabled buttons */
+.portlet button[disabled="disabled"],
+.portlet .button[disabled="disabled"],
+.portlet input[disabled="disabled"],
+.portlet input[disabled="disabled"]:hover,
+.portlet input[disabled="disabled"]:focus {background:#ddd !important; border:1px solid #999 !important; color:#999 !important; text-shadow:none; cursor:default;}
+
+/* Fluid Pager */
+.portlet .pager {text-align:right; font-size:10px;}
+.portlet .pager ul {list-style-type:none;}
+.portlet .pager ul,
+.portlet .pager ul li {display:inline;}
+.portlet .pager ul li {padding-left:5px}
+.portlet .pager a.fl-pager-disabled,
+.portlet .pager .fl-pager-disabled a { color: #777777; border: 0; text-decoration: none; cursor: default; }
+.portlet .pager a.fl-pager-currentPage,
+.portlet .pager .fl-pager-currentPage a { color: #000000; border: 0; text-decoration: none; cursor: default;}
+
+/* Dialogs (assumes jQuery UI) */
+.portlet .dialog .ui-corner-all {margin-bottom:1em; padding:0.5em 1em;}
+.portlet .dialog span.ui-icon {float: left; margin-right: 0.3em;}
+.portlet .dialog-link.button {padding:0.4em 1em 0.4em 20px; position:relative; text-decoration:none;}
+.portlet .dialog-link.button:hover {text-decoration:none;}
+.portlet .dialog-link.button span.ui-icon {margin: 0 5px 0 0; position: absolute; left: .2em; top: 50%; margin-top: -8px; zoom: 1;}

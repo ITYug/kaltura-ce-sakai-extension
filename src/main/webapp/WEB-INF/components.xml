@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright 2010 Unicon (R) Licensed under the
+    Educational Community License, Version 2.0 (the "License"); you may
+    not use this file except in compliance with the License. You may
+    obtain a copy of the License at
+
+    http://www.osedu.org/licenses/ECL-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+    or implied. See the License for the specific language governing
+    permissions and limitations under the License.
+
+-->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- Aaron Zeckoski (unicon) -->
+<beans>
+
+  <!-- Bring in the hibernate related beans -->
+  <import resource="spring-hibernate.xml" />
+  <import resource="sakai-hibernate.xml" />
+
+  <!-- create an external logic bean which abstracts out the Sakai bits -->
+  <bean id="org.sakaiproject.kaltura.logic.ExternalLogic" class="org.sakaiproject.kaltura.logic.SakaiExternalLogicImpl"
+    init-method="init">
+    <property name="authzGroupService" ref="org.sakaiproject.authz.api.AuthzGroupService" />
+    <property name="developerHelperService" ref="org.sakaiproject.entitybroker.DeveloperHelperService" />
+    <property name="functionManager" ref="org.sakaiproject.authz.api.FunctionManager" />
+    <property name="securityService" ref="org.sakaiproject.authz.api.SecurityService" />
+    <property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService" />
+    <property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+    <property name="siteService" ref="org.sakaiproject.site.api.SiteService" />
+    <property name="toolManager" ref="org.sakaiproject.tool.api.ToolManager" />
+    <property name="userDirectoryService" ref="org.sakaiproject.user.api.UserDirectoryService" />
+  </bean>
+
+  <!-- cache beans -->
+  <!--  PRE_2.9 way: class="org.springframework.cache.ehcache.EhCacheFactoryBean", 2.9+ class="org.sakaiproject.memory.util.EhCacheFactoryBean" -->
+  <bean id="ehcache.sakai.kaltura.entries" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    <property name="cacheManager" ref="org.sakaiproject.memory.api.MemoryService.cacheManager" />
+    <property name="cacheName" value="sakai.kaltura.entries" />
+    <property name="maxElementsInMemory" value="10000" />
+    <property name="diskPersistent" value="false" />
+    <property name="overflowToDisk" value="false" /><!-- overflowing to disk will cause an error -->
+    <property name="eternal" value="false" />
+    <property name="timeToLive" value="7200" />
+    <property name="timeToIdle" value="3600" />
+  </bean>
+
+  <bean id="ehcache.sakai.kaltura.cats" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    <property name="cacheManager" ref="org.sakaiproject.memory.api.MemoryService.cacheManager" />
+    <property name="cacheName" value="sakai.kaltura.cats" />
+    <property name="maxElementsInMemory" value="1000" />
+    <property name="diskPersistent" value="false" />
+    <property name="overflowToDisk" value="false" /><!-- overflowing to disk will cause an error -->
+    <property name="eternal" value="false" />
+    <property name="timeToLive" value="7200" />
+    <property name="timeToIdle" value="3600" />
+  </bean>
+
+  <!-- create a logic bean, give it the DAO -->
+  <bean id="org.sakaiproject.kaltura.logic.MediaService" class="org.sakaiproject.kaltura.logic.MediaService"
+    init-method="init" destroy-method="destroy">
+    <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+    <property name="dao" ref="org.sakaiproject.kaltura.dao.KalturaDao" />
+    <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    <property name="entriesCache" ref="ehcache.sakai.kaltura.entries" />
+  </bean>
+
+  <!-- create a bean for handling the kaltura API parts of the integration, only the media service should use this bean -->
+  <bean id="org.sakaiproject.kaltura.logic.KalturaAPIService" class="org.sakaiproject.kaltura.logic.KalturaAPIService"
+    init-method="init" destroy-method="destroy">
+    <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    <property name="entriesCache" ref="ehcache.sakai.kaltura.entries" />
+    <property name="categoriesCache" ref="ehcache.sakai.kaltura.cats" />
+  </bean>
+
+  <!-- create an entity provider bean -->
+  <bean class="org.sakaiproject.kaltura.logic.entity.KalturaEntityProvider" parent="org.sakaiproject.entitybroker.entityprovider.AbstractEntityProvider">
+    <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+    <property name="service" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    <property name="siteService" ref="org.sakaiproject.site.api.SiteService" />
+  </bean>
+
+  <!-- create an entity producer bean (id needs to match the name) -->
+  <bean id="org.sakaiproject.kaltura.logic.entity.KalturaEntityProducer" class="org.sakaiproject.kaltura.logic.entity.KalturaEntityProducer"
+    init-method="init">
+    <property name="service" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    <property name="entityManager" ref="org.sakaiproject.entity.api.EntityManager" />
+  </bean>
+
+</beans>

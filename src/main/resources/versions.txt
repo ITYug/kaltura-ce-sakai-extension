@@ -1,0 +1,4 @@
+Project versions (values will be replaced on build):
+Maven: ${project.name}, version ${project.version}
+App: ${build-timestamp}, ${svn-kaltura.timestamp}
+SVN: r${svn-kaltura.committedRevision}, current: r${svn-kaltura.revision} - ${svn-kaltura.committedDate}

@@ -1,0 +1,48 @@
+Index: reference/library/src/webapp/editor/ckeditor.launch.js
+===================================================================
+--- reference/library/src/webapp/editor/ckeditor.launch.js	(revision 121943)
++++ reference/library/src/webapp/editor/ckeditor.launch.js	(working copy)
+@@ -87,8 +87,8 @@
+             ['BidiLtr', 'BidiRtl' ],
+             ['Link','Unlink','Anchor'],
+             (sakai.editor.enableResourceSearch
+-                ? ['ResourceSearch', 'Image','Movie','Flash','Table','HorizontalRule','Smiley','SpecialChar','fmath_formula']
+-                : ['Image','Movie','Flash','Table','HorizontalRule','Smiley','SpecialChar','fmath_formula']),
++	         ? ['ResourceSearch','kaltura','Image','Movie','Flash','Table','HorizontalRule','Smiley','SpecialChar','fmath_formula']
++	         : ['kaltura','Image','Movie','Flash','Table','HorizontalRule','Smiley','SpecialChar','fmath_formula']),
+             '/',
+             ['Styles','Format','Font','FontSize'],
+             ['TextColor','BGColor'],
+@@ -151,6 +151,7 @@
+ 			 //ckconfig.contentsCss = basePath+'/atd-ckeditor/atd.css';
+ 
+ 			 ckconfig.extraPlugins+="movieplayer,wordcount,fmath_formula";
++			 ckconfig.extraPlugins+=",kaltura";
+     })();
+ 
+ 	  CKEDITOR.replace(targetId, ckconfig);
+Index: portal/portal-render-engine-impl/pack/src/webapp/vm/neoskin/includeStandardHead.vm
+===================================================================
+--- portal/portal-render-engine-impl/pack/src/webapp/vm/neoskin/includeStandardHead.vm	(revision 121943)
++++ portal/portal-render-engine-impl/pack/src/webapp/vm/neoskin/includeStandardHead.vm	(working copy)
+@@ -81,7 +81,7 @@
+      <script type="text/javascript" language="JavaScript" src="${pageScriptPath}/jquery/1.7.1/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" language="JavaScript" src="${pageScriptPath}/trimpath-template-latest.js"></script>
+ #end
+-
++<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+ <script type="text/javascript" language="JavaScript" src="/portal/scripts/neoscripts.js"></script>
+ <script type="text/javascript" language="JavaScript" src="/library/js/jquery/qtip/jquery.qtip-latest.min.js"></script>
+ <script type="text/javascript" language="JavaScript" src="/library/js/jquery/qtip/tutorial.js"></script>
+Index: portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm
+===================================================================
+--- portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm	(revision 121943)
++++ portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm	(working copy)
+@@ -55,6 +55,7 @@
+ #end
+ 
+ <script type="text/javascript" language="JavaScript" src="/portal/scripts/portalscripts.js"></script>
++<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+ 
+ ## SAK-20576 Moved declaration of the javascript variable 'portal' into the script that uses it (portalscripts.js) to
+ ##   so that this velocity macro is not a dependency for using that script

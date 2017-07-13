@@ -1,0 +1,36 @@
+Index: portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm
+===================================================================
+--- portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm	(revision 111145)
++++ portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm	(working copy)
+@@ -47,6 +47,7 @@
+ ${sakai_html_head_css}
+      <script type="text/javascript" language="JavaScript" src="${pageScriptPath}headscripts.js"></script>
+      <script type="text/javascript" language="JavaScript" src="${pageScriptPath}jquery.js"></script>
++     <script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+ #end
+ 
+ <script type="text/javascript" language="JavaScript" src="/portal/scripts/portalscripts.js"></script>
+Index: reference/library/src/webapp/editor/ckeditor.launch.js
+===================================================================
+--- reference/library/src/webapp/editor/ckeditor.launch.js	(revision 111145)
++++ reference/library/src/webapp/editor/ckeditor.launch.js	(working copy)
+@@ -45,7 +45,7 @@
+         filebrowserBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
+         filebrowserImageBrowseUrl : '/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Image&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
+         filebrowserFlashBrowseUrl :'/library/editor/FCKeditor/editor/filemanager/browser/default/browser.html?Type=Flash&Connector=/sakai-fck-connector/web/editor/filemanager/browser/default/connectors/jsp/connector' + collectionId + folder,
+-        extraPlugins: (sakai.editor.enableResourceSearch ? 'resourcesearch' : ''),
++        extraPlugins: (sakai.editor.enableResourceSearch ? 'resourcesearch,kaltura' : 'kaltura'),
+ 
+         // These two settings enable the browser's native spell checking and context menus.
+         // Control-Right-Click (Windows/Linux) or Command-Right-Click (Mac) on highlighted words
+@@ -69,8 +69,8 @@
+             ['BidiLtr', 'BidiRtl' ],
+             ['Link','Unlink','Anchor'],
+             (sakai.editor.enableResourceSearch
+-                ? ['ResourceSearch', 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+-                : ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']),
++	     ? ['ResourceSearch', 'kaltura', 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
++	     : ['kaltura', 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']),
+             '/',
+             ['Styles','Format','Font','FontSize'],
+             ['TextColor','BGColor'],

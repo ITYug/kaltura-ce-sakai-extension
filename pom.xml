@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>kaltura</artifactId>
+  <name>Sakai Kaltura Integration (plugin/tool)</name>
+  <description>This app allows integration between the kaltura video processing system and Sakai</description>
+  <organization>
+    <name>Unicon</name>
+    <url>http://unicon.net/</url>
+  </organization>
+  <inceptionYear>2010</inceptionYear>
+  <packaging>war</packaging>
+  <version>2.6</version>
+
+  <!-- Sakai master pom is the parent -->
+  <parent>
+    <artifactId>master</artifactId>
+    <groupId>org.sakaiproject</groupId>
+    <version>11.4</version>
+    <!-- version>2.8.2</version -->
+    <relativePath>../master/pom.xml</relativePath>
+  </parent>
+
+  <properties>
+    <build-timestamp>${maven.build.timestamp}</build-timestamp>
+    <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+  </properties>
+
+  <dependencies>
+    <!-- we are running a webapp in a servlet container so we need the servlet API -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+    </dependency>
+	<!-- generic-dao -->
+        <dependency>
+            <groupId>org.sakaiproject.genericdao</groupId>
+            <artifactId>generic-dao</artifactId>
+            
+        </dependency>
+    <!-- We need this special package to run the jsps in Sakai -->
+    
+    <!-- Sakai dependencies -->
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-component-manager</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.kernel</groupId>
+      <artifactId>sakai-kernel-util</artifactId>
+    </dependency>
+<dependency>
+      <groupId>org.sakaiproject</groupId>
+      <artifactId>sakai-jsp-adapter</artifactId>
+      <version>0.10-K1</version>
+      <scope>runtime</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.sakaiproject</groupId>
+          <artifactId>sakai-kernel-api</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.entitybroker</groupId>
+      <artifactId>entitybroker-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.sakaiproject.entitybroker</groupId>
+      <artifactId>entitybroker-utils</artifactId>
+    </dependency>
+
+  <!-- spring and hibernate -->
+  	<dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-web</artifactId>
+      </dependency>
+  	<dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-webmvc</artifactId>
+      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+        <!-- needed by hibernate unit tests -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+        </dependency>
+
+    <!-- utility libs -->
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <!-- kaltura library embedded now instead -->
+
+    <!-- JSP and standard tag libraries -->
+     <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>taglibs</groupId>
+      <artifactId>standard</artifactId>
+      <version>1.1.2</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Sakai uses apache commons logging -->
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+    </dependency>
+
+    <!-- testing dependencies -->
+    
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>1.6.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <scope>test</scope>
+      </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>sakai29</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <dependencies>
+        <dependency>
+          <!-- must include this in the war for sakai 2.9+ -->
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <scope>compile</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+    <profile>
+      <id>sakai28</id>
+    </profile>
+    <profile>
+      <id>sakai27</id>
+    </profile>
+    <profile>
+      <id>sakai26</id>
+    </profile>
+    <profile>
+      <id>perf</id>
+      <dependencies>
+        <dependency>
+          <!-- must include this in the war for sakai 2.9+ -->
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <scope>compile</scope>
+        </dependency>
+        <!-- for performance testing -->
+        <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjrt</artifactId>
+          <version>1.6.12</version>
+          <scope>compile</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.aspectj</groupId>
+          <artifactId>aspectjweaver</artifactId>
+          <version>1.6.12</version>
+          <scope>compile</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <!-- does compile time aspect weaving for performance testing -->
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>aspectj-maven-plugin</artifactId>
+            <configuration>
+              <aspectDirectory>src/java</aspectDirectory>
+              <complianceLevel>1.6</complianceLevel>
+              <source>1.6</source>
+              <target>1.6</target>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>compile</phase>
+                <goals>
+                  <goal>compile</goal>
+                  <goal>test-compile</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <profile>
+      <id>ddl</id>
+      <properties>
+        <!-- change this to reflect the name to use for the ddl files -->
+        <project.ddl.name>kaltura</project.ddl.name>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <!-- hibernate ddl generation -->
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>hibernate3-maven-plugin</artifactId>
+            <version>2.1</version>
+            <configuration>
+              <components>
+                <component>
+                  <name>hbm2ddl</name>
+                  <outputDirectory>ddl</outputDirectory>
+                </component>
+              </components>
+              <componentProperties>
+                <configurationfile>src/ddl/hibernate.cfg.xml</configurationfile>
+                <propertyfile>src/ddl/hibernate-hsqldb.properties</propertyfile>
+                <outputfilename>hsqldb/${project.ddl.name}.sql</outputfilename>
+                <drop>false</drop>
+                <create>true</create>
+                <export>false</export>
+                <jdk5>true</jdk5>
+                <format>true</format>
+              </componentProperties>
+            </configuration>
+            <executions>
+              <execution>
+                <id>export-hsqldb</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>hbm2ddl</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>export-mysql</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>hbm2ddl</goal>
+                </goals>
+                <configuration>
+                  <componentProperties>
+                    <propertyfile>src/ddl/hibernate-mysql.properties</propertyfile>
+                    <outputfilename>mysql/${project.ddl.name}.sql</outputfilename>
+                  </componentProperties>
+                </configuration>
+              </execution>
+              <execution>
+                <id>export-oracle</id>
+                <phase>process-classes</phase>
+                <goals>
+                  <goal>hbm2ddl</goal>
+                </goals>
+                <configuration>
+                  <componentProperties>
+                    <propertyfile>src/ddl/hibernate-oracle.properties</propertyfile>
+                    <outputfilename>oracle/${project.ddl.name}.sql</outputfilename>
+                  </componentProperties>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <build>
+    <!-- configure the build to use the standard maven structure -->
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}/src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <directory>${basedir}/src/main/webapp/WEB-INF</directory>
+        <includes>
+          <include>spring-hibernate.xml</include>
+          <include>logic-support.xml</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <!-- configure the war plugin to correctly use the standard maven structure -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+          <ouputDirectory>${project.build.directory}</ouputDirectory>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- Used to replace the headers of files with proper licenses - 
+          http://code.google.com/p/maven-license-plugin - 
+          Run mvn license:format to fix up licenses on all files in the project -->
+        <groupId>com.mycila.maven-license-plugin</groupId>
+        <artifactId>maven-license-plugin</artifactId>
+        <version>1.9.0</version>
+        <configuration>
+          <strictCheck>true</strictCheck>
+          <header>${basedir}/LICENSE_HEADER</header>
+          <properties>
+            <name>${project.name}</name>
+            <year>${project.inceptionYear}</year>
+            <holder>Unicon (R)</holder>
+          </properties>
+          <excludes>
+            <exclude>target/**</exclude>
+            <exclude>m2-target/**</exclude>
+            <exclude>.idea/**</exclude>
+            <exclude>**/com/kaltura/**</exclude>
+            <exclude>**/*.properties</exclude>
+            <exclude>**/*.txt</exclude>
+            <exclude>LICENSE*</exclude>
+            <exclude>**/README</exclude>
+            <exclude>bin/**</exclude>
+            <exclude>**/*.sql</exclude>
+            <exclude>**/*.swf</exclude>
+            <exclude>**/*.flv</exclude>
+            <exclude>util/runme.*</exclude>
+            <exclude>util/src/main/resources/runme.*</exclude>
+            <exclude>**/javascript/fluid/**</exclude>
+            <exclude>**/javascript/jquery/**</exclude>
+            <exclude>**/CSSUtils.java</exclude>
+          </excludes>
+          <mapping>
+            <tag>DYNASCRIPT_STYLE</tag>
+          </mapping>
+          <encoding>UTF-8</encoding>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <!-- Used to get the SVN data as maven properties http://maven-svn-revision-number-plugin.googlecode.com/svn/site/usage.html -->
+        <groupId>com.google.code.maven-svn-revision-number-plugin</groupId>
+        <artifactId>svn-revision-number-maven-plugin</artifactId>
+        <version>1.13</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <failOnError>false</failOnError>
+          <entries>
+            <entry>
+              <path>${project.basedir}</path>
+              <prefix>svn-kaltura</prefix>
+              <depth>infinity</depth>
+              <reportUnversioned>false</reportUnversioned>
+              <reportIgnored>false</reportIgnored>
+              <reportOutOfDate>false</reportOutOfDate>
+            </entry>
+          </entries>
+        </configuration>
+      </plugin>
+      <plugin>
+        <!-- convert the awful svn date from the plugin into a nice one using regex -->
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.7</version>
+        <executions>
+          <execution>
+            <phase>initialize</phase>
+            <goals>
+              <goal>regex-property</goal>
+            </goals>
+            <configuration>
+              <name>svn-kaltura.timestamp</name>
+              <value>${svn-kaltura.committedDate} </value>
+              <regex>^(\d{4})-([01]\d)-([0-3]\d) .*$</regex>
+              <replacement>$1$2$3</replacement>
+              <failIfNoMatch>false</failIfNoMatch>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- Replace the version in the source at build time http://code.google.com/p/maven-replacer-plugin/wiki/UsageGuide -->
+      <!-- done at runtime currently <plugin> <groupId>com.google.code.maven-replacer-plugin</groupId> <artifactId>maven-replacer-plugin</artifactId> 
+        <version>1.4.0</version> <executions> <execution> <id>update-build-date</id> <phase>process-sources</phase> <goals> <goal>replace</goal> 
+        </goals> <configuration> <replacements> <replacement> <token>String APP_BUILD_DATE = "(.+)";</token> <value>String APP_BUILD_DATE 
+        = "${build-timestamp}";</value> </replacement> <replacement> <token>String APP_SVN_REVISION = "(.+)";</token> <value>String 
+        APP_SVN_REVISION = "${svn-kaltura.revision}";</value> </replacement> </replacements> </configuration> </execution> <execution> 
+        <id>update-app-version</id> <phase>prepare-package</phase> <goals> <goal>replace</goal> </goals> <configuration> <token>String 
+        APP_VERSION = "(.+)";</token> <value>String APP_VERSION = "${svn-kaltura.timestamp}";</value> </configuration> </execution> 
+        </executions> <configuration> <file>src/main/java/org/sakaiproject/kaltura/logic/MediaService.java</file> </configuration> 
+        </plugin> -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>**/com/kaltura/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+    <!-- sets the name of the war file and thus the webapp URL -->
+    <finalName>${project.artifactId}</finalName>
+    <pluginManagement>
+      <plugins>
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build 
+          itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <versionRange>[1.7,)</versionRange>
+                    <goals>
+                      <goal>regex-property</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>maven-replacer-plugin</artifactId>
+                    <versionRange>[1.4.0,)</versionRange>
+                    <goals>
+                      <goal>replace</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-scr-plugin</artifactId>
+                    <versionRange>[1.7.2,)</versionRange>
+                    <goals>
+                      <goal>scr</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <versionRange>[1.4,)</versionRange>
+                    <goals>
+                      <goal>compile</goal>
+                      <goal>test-compile</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>com.google.code.maven-svn-revision-number-plugin</groupId>
+                    <artifactId>svn-revision-number-maven-plugin</artifactId>
+                    <versionRange>[1.13,)</versionRange>
+                    <goals>
+                      <goal>revision</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <!-- ensure master jars can be found -->
+  <repositories>
+    <!--
+    <repository>
+      <id>internal</id>
+      <layout>legacy</layout>
+      <url>file://${basedir}/internal</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    -->
+    <repository>
+      <id>sakai-maven</id>
+      <name>Sakai Maven Repo</name>
+      <layout>default</layout>
+      <url>http://source.sakaiproject.org/maven2</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <licenses>
+    <license>
+      <name>ECL 2.0</name>
+      <distribution>repo</distribution>
+      <url>http://www.osedu.org/licenses/ECL-2.0/</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:svn:https://source.sakaiproject.org/svn/msub/unicon.net/kaltura/trunk</connection>
+    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/msub/unicon.net/kaltura/trunk</developerConnection>
+    <url>https://source.sakaiproject.org/viewsvn/msub/unicon.net/kaltura/trunk</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>Sakai-Maven2</id>
+      <name>Sakaiproject Maven 2 repository</name>
+      <url>dav:https://source.sakaiproject.org/maven2</url>
+    </repository>
+    <site>
+      <id>local site</id>
+      <url>file:/tmp/kaltura/site/</url>
+    </site>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <id>aaronz@vt.edu</id>
+      <name>Aaron Zeckoski</name>
+      <email>azeckoski@vt.edu</email>
+      <url>http://tinyurl.com/azprofile</url>
+      <roles>
+        <role>Architect</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>-5</timezone>
+    </developer>
+  </developers>
+
+</project>

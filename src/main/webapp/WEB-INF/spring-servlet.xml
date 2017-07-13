@@ -1,0 +1,117 @@
+<!--
+
+    Copyright 2010 Unicon (R) Licensed under the
+    Educational Community License, Version 2.0 (the "License"); you may
+    not use this file except in compliance with the License. You may
+    obtain a copy of the License at
+
+    http://www.osedu.org/licenses/ECL-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an "AS IS"
+    BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+    or implied. See the License for the specific language governing
+    permissions and limitations under the License.
+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Non-tool services -->
+
+    <bean id="viewMediaController" class="org.sakaiproject.kaltura.tool.editor.ViewMediaController">
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    </bean>
+
+    <bean id="fckKalturaSelectorController" class="org.sakaiproject.kaltura.tool.editor.FckKalturaSelectorController">
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    </bean>
+
+    <!-- Sakai tool controllers -->
+
+    <bean id="listCollectionsController" class="org.sakaiproject.kaltura.tool.ListCollectionsController">
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    </bean>
+
+    <bean id="viewCollectionController" class="org.sakaiproject.kaltura.tool.ViewCollectionController">
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+        <property name="developerHelperService" ref="org.sakaiproject.entitybroker.DeveloperHelperService" />
+        <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+    </bean>
+
+    <bean id="collectionDetailsValidator" class="org.sakaiproject.kaltura.mvc.command.CollectionFormValidator" />
+
+    <bean id="editCollectionDetailsController" class="org.sakaiproject.kaltura.tool.EditCollectionDetailsController">
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    </bean>
+
+    <bean id="editCollectionMediaController" class="org.sakaiproject.kaltura.tool.EditCollectionMediaController">
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    </bean>
+
+    <bean id="deleteCollectionController" class="org.sakaiproject.kaltura.tool.DeleteCollectionController">
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    </bean>
+
+    <bean id="uploadMediaController" class="org.sakaiproject.kaltura.tool.UploadMediaController">
+        <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+        <property name="service" ref="org.sakaiproject.kaltura.logic.MediaService" />
+    </bean>
+
+    <bean id="permissionsController" class="org.sakaiproject.kaltura.tool.PermissionController">
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+        <property name="sessionManager" ref="org.sakaiproject.tool.api.SessionManager" />
+        <property name="toolManager" ref="org.sakaiproject.tool.api.ToolManager" />
+    </bean>
+
+    <bean id="kalClipController" class="org.sakaiproject.kaltura.tool.KalClipController">
+        <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+        <property name="mediaService" ref="org.sakaiproject.kaltura.logic.MediaService" />
+        <property name="external" ref="org.sakaiproject.kaltura.logic.ExternalLogic" />
+    </bean>
+
+    <bean id="viewProfilingController" class="org.sakaiproject.kaltura.tool.ViewProfilingController" />
+
+    <!-- Spring controller mappings -->
+
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <bean class="org.sakaiproject.kaltura.tool.AllRequestInterceptor">
+                    <property name="kalturaAPIService" ref="org.sakaiproject.kaltura.logic.KalturaAPIService" />
+                </bean>
+            </list>
+        </property>
+        <property name="mappings">
+            <value>
+                /service/fckKalturaSelector.htm=fckKalturaSelectorController
+                /service/viewMedia.htm=viewMediaController
+                /kalClip.htm=kalClipController
+                /listCollections.htm=listCollectionsController
+                /viewCollection.htm=viewCollectionController
+                /editCollectionDetails.htm=editCollectionDetailsController
+                /editCollectionMedia.htm=editCollectionMediaController
+                /deleteCollection.htm=deleteCollectionController
+                /uploadMedia.htm=uploadMediaController
+                /setPermissions.htm=permissionsController
+                /viewProfiling.htm=viewProfilingController
+            </value>
+        </property>
+    </bean>
+
+    <!-- Spring view mappings -->
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="10" />
+    </bean>
+</beans>

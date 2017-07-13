@@ -1,0 +1,415 @@
+/**
+ * Copyright 2010 Unicon (R) Licensed under the
+ * Educational Community License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
+ *
+ * http://www.osedu.org/licenses/ECL-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS IS"
+ * BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+/* Kaltura-Sakai Media Gallery (KSMG) */
+
+/* Forms */
+.required {color: red; font-weight: bold;}
+
+/* FSS Layout Extensions */
+.fl-col-mixed-522 .fl-col-fixed {width:522px; padding:0;}
+.fl-col-mixed-522 .fl-col-flex {margin-left:522px; padding:0;}
+
+/* Headings */
+.portlet h1,.portlet h2,.portlet h3,.portlet h4,.portlet h5,.portlet h6 { margin:1em 0 0.3em; font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif; color:#465956; }
+.portlet h1 { font-size:200%; }
+.portlet h2 { font-size:150%; }
+.portlet h3 { font-size:120%; }
+.portlet h4 { font-size:100%; }
+.portlet h5 { font-size:100%; }
+.portlet h6 { font-size:100%; }
+
+/* Links */
+.portlet a {color:#708090;}
+.portlet a:hover,
+.portlet a:focus {color:#000;}
+
+/* Globals */
+.portlet p { margin:0 0 1em 0; }
+.portlet .hidden {display:none;}
+
+/* Views */
+.portlet .portlet-views .view-tabs {border-bottom-color:#ccc;}
+.portlet .portlet-views .view-tabs li a {
+	background:#f2f8f7;
+	background:-moz-linear-gradient(0% 100% 90deg, #f2f8f7, #fff);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f2f8f7)); 
+	border:1px solid #ccc;
+	color:#465956;
+	font-weight:bold;
+	text-decoration:none !important;
+	margin-left:-5px;
+	padding:3px 16px 2px;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.portlet .portlet-views .view-tabs li.fl-activeTab a {
+	background:#e2e8e7;
+	background:-moz-linear-gradient(0% 100% 90deg, #e2e8e7, #f2f8f7);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f2f8f7), to(#e2e8e7)); 
+	border-bottom-color:#e2e8e7;
+}
+.portlet .portlet-views .view-tabs li a:hover,
+.portlet .portlet-views .view-tabs li a:focus {
+	background:#B0C1BE;
+	background:-moz-linear-gradient(0% 100% 90deg, #B0C1BE, #f2f8f7);
+	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#f2f8f7), to(#B0C1BE)); 
+	color:#000;
+}
+.portlet .tab-content {border:1px solid #ccc; border-top:none;}
+
+/* Toolbar */
+.portlet .toolbar {
+	padding:0 15px;
+	background-color:#e2e8e7;
+	border-bottom:1px solid #ccc;
+	-webkit-box-shadow:0px 1px 2px rgba(0,0,0,.25); 
+	-moz-box-shadow:0px 1px 2px rgba(0,0,0,.25);
+	box-shadow:0px 1px 2px rgba(0,0,0,.25);
+}
+.portlet .toolbar ul {margin:0; padding:0; overflow:hidden; zoom:1;} 
+.portlet .toolbar li {list-style-type:none; float:left; display:inline; padding:5px; margin-left:-5px;}
+.portlet .toolbar ul a {
+	padding:0 0.5em;
+	border:1px solid #e2e8e7;
+	text-decoration:none !important;
+}
+.portlet .toolbar ul a:hover,
+.portlet .toolbar ul a:focus {
+	background-color:rgba(255,255,255,0.35);
+	border-color:#ccc;
+}
+.portlet .toolbar .search {text-align:right;}
+
+/* Content */
+.portlet .portlet-content {margin:0; padding:10px}
+
+/* Titlebar */
+.portlet .titlebar {margin-bottom:0;}
+.portlet .portlet-titlebar > .title {padding:0 0 0.2em 0; border-bottom:none;}
+.portlet .titlebar .return-link {padding-left:16px; background:transparent url(../images/icons/control_180_small.png) center left no-repeat;}
+.portlet .titlebar .button {
+	float:none;
+	position:absolute;
+	top:0.2em;
+	left:17em;
+	border-color:#000;
+	background-color:#666; 
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#eee), to(#666)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #666, #eee);
+	color:#fff;
+	text-shadow:0 -1px 1px rgba(0,0,0,.65);
+}
+.portlet .titlebar .button:hover,
+.portlet .titlebar .button:focus {
+	background-color:#333; 
+	background-image:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#eee), to(#333)); 
+	background-image:-moz-linear-gradient(0% 50% 90deg, #333, #eee);
+}
+
+/* Description */
+.portlet .portlet-content > .description {margin:0 0 20px 0; color:#999; border-bottom:1px solid #ccc;}
+.portlet .portlet-content .description p {margin:0;}
+
+/* Note */
+.portlet .portlet-msg.empty {}
+.portlet .portlet-msg.empty p {}
+.portlet .portlet-msg.empty a {font-weight:bold; color:#0059B3; text-decoration:none !important;}
+.portlet .portlet-msg.empty a:hover {text-decoration:underline !important;}
+
+/* Collection View */
+.portlet.view-collection {}
+.portlet.view-collection .content > .description {}
+.portlet.view-collection .columns-2 {}
+.portlet.view-collection .column .inner {min-height:600px; overflow:auto;}
+.portlet.view-collection .column.last .inner {border-left:none; padding:0;}
+.portlet.view-collection .collection-media {min-width:320px;}
+
+
+/* Search and Pager for media lists */
+.portlet .search {padding:3px 10px; background-color:#e5e6e7; border:1px solid #ccc; text-align:right;}
+.portlet .pager {padding:10px 0;}
+.portlet .pager ul {padding:0;}
+.portlet .pager-body {padding:0; overflow:auto;}
+.fl-pager-disabled {font-style:italic;}
+.fl-pager-disabled A {text-decoration:none;}
+.fl-pager-currentPage {font-weight:bold;}
+.fl-pager-currentPage A {text-decoration:none;}
+
+/* Media List */
+.portlet .media-list {margin:0; padding:0; font-size:11px;}
+.portlet .media-item {position:relative;}
+.portlet .media-list .media-item {display:block; float:left; width:124px; height:130px; margin:0 10px 10px 0;}
+.portlet .media-item .thumbnail {width:124px; position:relative;}
+.portlet .thumbnail .thumbnail-link {display:block; height:90px;}
+.portlet .view-all .thumbnail {height:94px;}
+.portlet .thumbnail .thumbnail-link .image {display:block; height:90px;}
+.portlet .media-item .thumbnail .thumbnail-link {padding:1px; border:1px solid #666; background-color:#fff;}
+.portlet .media-item .thumbnail .thumbnail-link .image {background-color:#000;}
+.portlet .media-list .media-item .thumbnail-title {display:inline-block; width:96px; height:16px; margin:0 2px; overflow:hidden; font-weight:bold;}
+.portlet .media-list .media-item .thumbnail-title a {text-decoration:none !important; white-space:nowrap;}
+.portlet .media-list .media-item thumbnail-title a {display:inline-block; width:96px; height:16px; }
+.portlet .media-list .type-video .thumbnail-title,
+.portlet .media-list .type-audio .thumbnail-title,
+.portlet .media-list .type-image .thumbnail-title {padding-left:20px; background-image:url(../images/icons/film.png); background-position: center left; background-repeat:no-repeat;}
+.portlet .media-list .type-audio .thumbnail-title {background-image:url(../images/icons/music.png);}
+.portlet .media-list .type-image .thumbnail-title {background-image:url(../images/icons/image.png);}
+/* Permissions in view collection */
+/* Hide actions by default. Show actions if user has .control, .edit, or .manage. These classes are written based on user permissions. */
+.portlet .media-list .media-item .actions {display:none;}
+.portlet .media-list .media-item.control .actions,
+.portlet .media-list .media-item.edit .actions,
+.portlet .media-list .media-item.manage .actions {display:block;}
+.portlet .media-list .media-item .item-remove-link,
+.portlet .media-list .media-item .edit-item-details {display:none;}
+.portlet .media-list .media-item.control .item-remove-link {display:block;}
+.portlet .media-list .media-item.edit .edit-item-details,
+.portlet .media-list .media-item.manage .edit-item-details {display:block;}
+/* end permissions */
+.portlet .media-list .media-item .actions {height:13px; margin:-2px 2px 0 2px; font-size:9px; border-top:1px dotted #666; overflow:hidden;}
+.portlet .media-list .media-item .actions li {margin-left:0; padding:0; border-left:1px dotted #333;}
+.portlet .media-list .media-item .actions li:first-child {border-left:none;}
+.portlet .media-list .media-item .actions a {padding:0 4px; color:#ccc; text-decoration:none !important;}
+.portlet .media-list .media-item .actions a:hover {background-color:#333; color:#fff;}
+.portlet .media-item > .details {position:absolute; top:90px; right:0; width:134px; z-index:20; border:1px solid #ff6600;}
+.portlet .current .thumbnail {-webkit-box-shadow:0 0 12px rgba(51,204,255,.9); -moz-box-shadow:0 0 12px rgba(51,204,255,.9); box-shadow:0 0 12px rgba(51,204,255,.9);}
+.portlet .media-item .perms {position:absolute; bottom:1px; right:1px; background-color:#000; -webkit-border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; border-top-left-radius: 5px; -webkit-box-shadow:-1px -1px 6px rgba(0,0,0,.4); -moz-box-shadow:-1px -1px 6px rgba(0,0,0,.4); box-shadow:-1px -1px 6px rgba(0,0,0,.4); display:none;}
+.portlet .media-item .perms .owned-marker,
+.portlet .media-item .perms .control-marker,
+.portlet .media-item .perms .shared-marker,
+.portlet .media-item .perms .mixable-marker {display:none;}
+.portlet .media-item.owned .perms .owned-marker,
+.portlet .media-item.control .perms .control-marker,
+.portlet .media-item.shared .perms .shared-marker,
+.portlet .media-item.remixable .perms .mixable-marker {display:block;}
+.portlet .media-item.owned .perms,
+.portlet .media-item.control .perms,
+.portlet .media-item.shared .perms,
+.portlet .media-item.mixable .perms {display:block;}
+.portlet .media-item .perms ul {margin:5px 2px 3px 2px; padding:0;}
+.portlet .media-item .perms ul li {list-style-type:none; height:16px; width:16px; margin:0 0 2px 0; padding:0; background-image:url(../images/icons/perms_icons_flat.png)}
+.portlet .media-item .perms .owned-marker {background-position:0 0;}
+.portlet .media-item .perms .control-marker {background-position:0 -16px;}
+.portlet .media-item .perms .shared-marker {background-position:0 -32px;}
+.portlet .media-item .perms .mixable-marker {background-position:0 -48px;}
+.portlet .media-item .perms ul li span {display:none;}
+.portlet .media-item .hidden-marker {display:none;}
+.portlet .media-item.hidden .hidden-marker {display:block; position:absolute; top:2px; left:2px; width:122px; background-color:#ccc; background-color:rgba(122,122,122,.5); color:#fff; font-weight:bold; text-align:center;}
+.portlet .media-item.hidden .thumbnail .thumbnail-link {border-color:#ccc; background-color:#ccc;}
+.portlet .media-item.hidden .thumbnail .thumbnail-link .image {background-color:#ccc;}
+.portlet .media-item.hidden .thumbnail img {opacity:0.5;}
+.portlet .media-list .media-item:hover,
+.portlet .media-list .media-item:hover .thumbnail .thumbnail-link,
+.portlet .media-list .media-item .thumbnail .thumbnail-link:hover,
+.portlet .media-list .media-item:focus,
+.portlet .media-list .media-item:focus .thumbnail .thumbnail-link,
+.portlet .media-list .media-item .thumbnail .thumbnail-link:focus {border-color:#000; background-color:#000;}
+.portlet .media-item .thumbnail .thumbnail-link:hover {cursor:pointer;}
+.portlet .media-list .media-item:hover .thumbnail-title,
+.portlet .media-list .media-item:hover .thumbnail-title a,
+.portlet .media-list .media-item:hover .thumbnail-title a:hover,
+.portlet .media-list .media-item:focus .thumbnail-title a,
+.portlet .media-list .media-item:focus .thumbnail-title a:focus {color:#fff !important;}
+
+/* Media Viewer */
+.portlet .media-viewer, .media-viewer-loading {width:488px;}
+.portlet .media-viewer .titlebar {margin-bottom:3px;}
+.portlet .media-viewer .titlebar .title {margin:0; text-transform:uppercase; font-size:120%;}
+.portlet .media-viewer .content {}
+.portlet .media-viewer .media-item {}
+.portlet .media-viewer .media-item .media-player,
+.portlet .media-viewer .media-item .actions {padding:3px; border:1px solid #ccc;}
+.portlet .media-viewer .media-item .media-player {background:#fff;}
+.portlet .media-viewer .media-item .actions {padding:0 3px; text-align:right; background:#ccc;}
+.portlet .media-viewer .media-item .actions ul {}
+.portlet .media-viewer .media-item .actions li {display:block; padding:5px;}
+.portlet .media-viewer .media-item .actions a {
+	padding:0 0.5em;
+	border:1px solid #ccc;
+	text-decoration:none !important;
+}
+.portlet .media-viewer .media-item .actions a:hover,
+.portlet .media-viewer .media-item .actions a:focus {
+	background-color:rgba(255,255,255,0.35);
+	border-color:#aaa;
+}
+.portlet .media-viewer .media-item .meta {margin-top:10px; font-size:100%;}
+.portlet .media-viewer .media-item .meta .tags,
+.portlet .media-viewer .media-item .meta .desc,
+.portlet .media-viewer .media-item .meta .date,
+.portlet .media-viewer .media-item .meta .author {padding:3px 10px;}
+.portlet .media-viewer .media-item .meta .label,
+.portlet .media-viewer .media-item .meta p {display:inline; margin:0;}
+.portlet .media-viewer .media-item .meta .label {font-size:100%; font-weight:normal; color:#222;}
+.portlet .media-viewer .media-item .meta .creation-date {margin-bottom:0.5em;}
+
+/* Collection Media */
+.portlet .collection-media .titlebar {margin-bottom:3px;}
+.portlet .collection-media .titlebar .title {margin:0; font-size:120%;}
+.portlet .view-collection .collection-media .options {padding:2px 1em; border-bottom:1px solid #ccc; text-align:right;}
+.portlet .view-collection .collection-media .options ul {margin:0; padding:0; overflow:hidden; zoom:1;}
+.portlet .view-collection .collection-media .options li {list-style-type:none; display:inline-block;}
+.portlet .view-collection .collection-media .options .button {margin:0; padding:2px 5px; border:none; background:none; color:#3355BB;}
+.portlet .view-collection .collection-media .options .button:hover {background-color:#5a95cf; color:#fff;}
+.portlet .view-collection .collection-media .media-list {padding:2em;}
+
+/* Home Panel List */
+.portlet.view-home .panel {position:relative;}
+.portlet.view-home .panel {
+	width:280px;
+	height:152px;
+	float:left;
+	margin-right:10px;
+	padding:5px 10px;
+	background:#eee url(../images/light_top_100px_70.png) 0 0 repeat-x;
+	background:-webkit-gradient(linear, 0% 0%, 0% 50%, from(#eee), to(#fff)); 
+	background:-moz-linear-gradient(0% 50% 90deg, #eee, #fff);
+	border:1px solid #a9a9a9;
+	-moz-border-radius:7px;
+	-webkit-border-radius:7px;
+	border-radius:7px;
+}
+.portlet.view-home .panel.panel-hover {
+	border-color:#333;
+	-webkit-box-shadow:4px 4px 4px rgba(0,0,0,.25); 
+	-moz-box-shadow:4px 4px 4px rgba(0,0,0,.25);
+	box-shadow:4px 4px 4px rgba(0,0,0,.25);
+	cursor:pointer;
+}
+.portlet.view-home .panel .panel-titlebar {white-space:nowrap; overflow:hidden;}
+.portlet.view-home .panel .panel-titlebar .title {font-size:110%;}
+.portlet.view-home .panel .panel-titlebar .title a {color:#3E6A97;}
+.portlet.view-home .panel .panel-titlebar .title a:hover {text-decoration:underline !important;}
+.portlet.view-home .panel .content {padding:0;}
+.portlet.view-home .panel .content .description {height:3em; margin:0 0 5px 0; font-size:85%; overflow:hidden; color:#999;}
+.portlet.view-home .panel .fl-col {padding:0;}
+.portlet .panel .featured-item {}
+.portlet .panel .featured-item .thumbnail-title a {color:#3E6A97; text-decoration:none !important; font-weight:bold;}
+.portlet .panel .featured-item .thumbnail-title a:hover,
+.portlet .panel .featured-item .thumbnail-title a:focus {text-decoration:underline !important;}
+.portlet .panel .featured-item .media-item .thumbnail-link:hover,
+.portlet .panel .featured-item .media-item .thumbnail-link:focus {border-color:#000; background-color:#000;}
+
+/* Manage Media */
+.portlet .media-manager {}
+.portlet .media-manager .column {margin:0; padding:0;}
+.portlet .media-manager .column > .inner {position:relative;}
+.portlet .media-manager .column.first > .inner {padding-right:30px;}
+.portlet .media-manager .column.last > .inner {padding-left:30px;}
+.portlet .media-manager .collection-media > .titlebar,
+.portlet .media-manager .site-library > .titlebar {margin:0; padding:2px 0; position:relative;}
+.portlet .media-manager .collection-media > .titlebar .title,
+.portlet .media-manager .site-library > .titlebar .title {margin:0;}
+.portlet .media-manager .collection-media > .titlebar .details,
+.portlet .media-manager .site-library > .titlebar .details {position:absolute; top:2px; right:1em;}
+.portlet .media-manager .collection-media > .content,
+.portlet .media-manager .site-library > .content {}
+.portlet .media-manager .media-item .action-marker {
+	position:absolute;
+	top:30px;
+	display:none;
+	padding:2px 10px 2px 26px;
+	z-index:10;
+	-webkit-box-shadow:2px 2px 4px rgba(0,0,0,.5); 
+	-moz-box-shadow:2px 2px 4px rgba(0,0,0,.5);
+	box-shadow:2px 2px 4px rgba(0,0,0,.5);
+}
+.portlet .media-manager .media-item .add .action-marker {left:30px; background:green url(../images/icons/plus_circle.png) 6px 2px no-repeat; color:#fff; border:1px solid #060;}
+.portlet .media-manager .media-item .remove .action-marker {left:20px; background:red url(../images/icons/cross_circle.png) 6px 2px no-repeat; color:#fff; border:1px solid #900;}
+/* always allow add (user has add permission if they can reach the manage media page). */
+.portlet .media-manager .media-list .media-item .thumbnail .thumbnail-link:hover .add .action-marker,
+.portlet .media-manager .media-list .media-item .thumbnail .thumbnail-link:focus .add .action-marker {display:block;}
+/* only show remove action if user has .control permission. */
+.portlet .media-manager .media-list .media-item .thumbnail .thumbnail-link:hover {cursor:default;}
+.portlet .media-manager .media-list .media-item.control .thumbnail .thumbnail-link:hover,
+.portlet .media-manager .media-list .media-item.control .thumbnail .thumbnail-link:focus {cursor:pointer;}
+.portlet .media-manager .media-list .media-item.control .thumbnail .thumbnail-link:hover .remove .action-marker,
+.portlet .media-manager .media-list .media-item.control .thumbnail .thumbnail-link:focus .remove .action-marker {display:block;}
+
+/* Edit Collection */
+.portlet.view-edit .toolbar {height:25px;}
+.portlet.view-edit .portlet-form textarea {height:100px; width:206px;}
+.portlet.view-edit .portlet-form select {width:206px;}
+.portlet.view-edit .portlet-form .help-legend {font-size:11px;}
+.portlet.view-edit .portlet-form .help-legend h3 {font-weight:normal; font-size:100%;}
+.portlet.view-edit .portlet-form .help-legend ul,
+.portlet.view-edit .portlet-form .help-legend li {margin:0; padding:0}
+.portlet.view-edit .portlet-form .help-legend ul {margin-top:10px;}
+.portlet.view-edit .portlet-form .help-legend li {list-style-type:none; margin-bottom:1px;}
+.portlet.view-edit .portlet-form .help-legend li strong {color:#333;}
+.media-list .media_item_main {display: inline;}
+
+/* Dialogs */
+.portlet .dialog .ui-corner-all {margin-bottom:1em; padding:0.5em 1em;}
+.portlet .dialog span.ui-icon {float: left; margin-right: 0.3em;}
+.portlet .dialog-link.button {padding:0.4em 1em 0.4em 20px; position:relative; text-decoration:none;}
+.portlet .dialog-link.button:hover {text-decoration:none;}
+.portlet .dialog-link.button span.ui-icon {margin: 0 5px 0 0; position: absolute; left: .2em; top: 50%; margin-top: -8px; zoom: 1;}
+
+/* fck/ckeditor popup */
+.portlet .browse-media-window, .portlet .upload-media-window {padding:6px;}
+.portlet .browse-media-window .upload-media-link, .portlet .browse-media-window .refresh-media-link {padding: 4px 6px; font-size: 1.4em; font-weight: bold;}
+.portlet .upload-media-window .close-upload-link {padding: 4px 6px; font-size: 1.1em; font-weight: bold;}
+.portlet .nav-warning-message {margin-left:1em;}
+
+/* for the validation errors on the collection */
+.portlet input.error {background-color: red; border: 2px solid red;}
+.portlet span.error, div.error {font-weight: bold; color: red;}
+p.error {text-align: center; font-weight: bold; color: red; }
+.kaltura-item-edit p.invalid-tag {font-size: 10px; font-weight: normal;}
+
+/* profiling */
+.profiles-table TR.profile-item.heavy.seconds TD {border: 5px ridge #FF0000; padding:2px;}
+.profiles-table TR.profile-item.heavy.milliseconds TD {border: 3px ridge #FF0000; padding:2px;}
+.profiles-table TR.profile-item.medium.seconds TD {border: 4px ridge #FF9933; padding:2px;}
+.profiles-table TR.profile-item.medium.milliseconds TD {border: 2px ridge #FF9933; padding:2px;}
+.profiles-table TD.profile-calls.heavy {background-color: #00FF33; font-weight: bold;}
+.profiles-table TD.profile-calls.medium {background-color: #00FFFF;}
+.profiles-table TD.profile-calls.light {}
+.profiles-table TD.profile-time.average.seconds {background-color: #FF0000; color: white; font-weight: bold;}
+.profiles-table TD.profile-time.average.milliseconds {background-color: #FF9933;}
+.profiles-table TD.profile-time.average.microseconds {background-color: #FFFF66;}
+.profiles-table TD.profile-time.average.nanoseconds {}
+.profiles-table TD.profile-time.run.seconds {background-color: #FF9933;}
+.profiles-table TD.profile-time.run.milliseconds {background-color: #FFFF66;}
+
+/* IE9/FF scrollbars in the collections view - SKE-173 */
+.kaltura-gallery .media-item .fl-col-flex2, .kaltura-gallery .media-item .fl-col-flex3, .kaltura-gallery .media-item .fl-col-flex4, .kaltura-gallery .media-item .fl-col-flex5 { overflow: hidden; }
+
+/* AJAX loading - SKE-167 */
+.loading {background:transparent url(../images/ajax-loader.gif) center left no-repeat;}
+.ajax-running, .ajax-running-complete {background-color: yellow; padding:2px; font-weight:bold;}
+
+/* From http://preloaders.net/ - 0000FF, slow animation
+  small - 64px
+  medium - 128px
+  large - 200px
+*/
+.loading-overlay-small {z-index:20001;position:absolute;top:0;left:0; background: rgba(0,0,0,.5) url(../images/ajax-spinner-small.gif) center 30% no-repeat;}
+.loading-overlay-medium {z-index:20001;position:absolute;top:0;left:0; background: rgba(0,0,0,.5) url(../images/ajax-spinner-medium.gif) center center no-repeat;}
+.loading-overlay-large {z-index:20001;position:absolute;top:0;left:0; background: rgba(0,0,0,.5) url(../images/ajax-spinner-large.gif) center center no-repeat;}
+
+.loadmask{z-index:100;position:absolute;top:0;left:0;-moz-opacity:0.7;opacity:.70;filter:alpha(opacity=70);background-color:#FFF;width:100%;height:100%;zoom:1;}
+.loadmask-msg{z-index:20001;position:absolute;top:0;left:0;border:1px solid #6593cf;background:#c3daf9;padding:2px;}
+.loadmask-msg div{background:#fbfbfb url(../images/loading.gif) no-repeat 5px 5px;line-height:16px;border:1px solid #a3bad9;color:#222;font:normal 11px tahoma, arial, helvetica, sans-serif;cursor:wait;padding:5px 10px 5px 25px;}
+.masked{overflow:hidden!important;}
+.masked-relative{position:relative!important;}
+.masked-hidden{visibility:hidden!important;}
+
+/* No items alignment - SKE-182 */
+.no_items{margin: .5em -1em !important;}

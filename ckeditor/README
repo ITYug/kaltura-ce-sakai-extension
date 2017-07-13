@@ -1,0 +1,50 @@
+These steps describe how to modify Sakai so the FCK editor will work with the Kaltura Media Gallery.
+
+NOTE: there are also patch files for sakai 2.9 which will do steps 2-4 for you (you still have to do step 1 and step 5)
+
+1. Copy the "kaltura" directory to 
+{SAKAI_ROOT}/reference/library/src/webapp/editor/ckeditor/plugins/kaltura
+Example:
+cp -R kaltura_tool/ckeditor/kaltura reference/library/src/webapp/editor/ckeditor/plugins
+
+2. Edit {SAKAI_ROOT}/reference/library/src/webapp/editor/ckeditor.launch.js
+at about line 156, add the following additional line:
+
+    is:
+        ckconfig.extraPlugins+="movieplayer,wordcount,fmath_formula";
+
+    changes to:
+        ckconfig.extraPlugins+="movieplayer,wordcount,fmath_formula";
+        ckconfig.extraPlugins+=",kaltura";
+
+at about line 89, inside the definition of "toolbar_Full:", add 'kaltura' before the two references to 'Image' 
+(these are the buttons in the toolbar):
+
+    is:
+        (sakai.editor.enableResourceSearch
+            ? ['ResourceSearch','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+            : ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']),
+
+    changes to:
+        (sakai.editor.enableResourceSearch
+            ? ['ResourceSearch','kaltura','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+            : ['kaltura','Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']),
+
+**** When running Sakai version 10.4 and later you can skip steps 3-5 because of SAK-29001. Instead you need to add the following property (as-is) to your sakai.properties.
+portal.include.extrahead=<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+
+Sakai versions earlier than 10.4 need to continue on and do steps 3-5 for the videos to run correctly.
+
+3. Add the following script to {SAKAI_ROOT}/portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm (around line 50):
+
+<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+
+4. Add the following script to {SAKAI_ROOT}/portal/portal-render-engine-impl/pack/src/webapp/vm/neoskin/includeStandardHead.vm (around line 49):
+
+<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+
+5. Re-deploy the reference and portal projects.
+
+mvn clean install sakai:deploy -f reference/pom.xml
+mvn clean install sakai:deploy -f portal/pom.xml
+

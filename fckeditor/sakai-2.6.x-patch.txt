@@ -1,0 +1,47 @@
+Index: portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm
+===================================================================
+--- portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm  (revision 74876)
++++ portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm  (working copy)
+@@ -46,6 +46,7 @@
+      <script type="text/javascript" language="JavaScript" src="${pageScriptPath}jquery.js"></script>
+ #end
+ <script type="text/javascript" language="JavaScript" src="/portal/scripts/portalscripts.js"></script>
++<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+ 
+ #if ( ${styleable} )
+ <script type="text/javascript" 
+Index: reference/library/src/webapp/editor/FCKeditor/config.js
+===================================================================
+--- reference/library/src/webapp/editor/FCKeditor/config.js (revision 75687)
++++ reference/library/src/webapp/editor/FCKeditor/config.js (working copy)
+@@ -53,6 +53,8 @@
+ // FCKConfig.Plugins.Add( 'dragresizetable' );
+ FCKConfig.AutoGrowMax = 400 ;
+ 
++FCKConfig.Plugins.Add( 'kaltura' );
++
+ // FCKConfig.ProtectedSource.Add( /<%[\s\S]*?%>/g ) ;  // ASP style server side code <%...%>
+ // FCKConfig.ProtectedSource.Add( /<\?[\s\S]*?\?>/g ) ;    // PHP style server side code
+ // FCKConfig.ProtectedSource.Add( /(<asp:[^\>]+>[\s|\S]*?<\/asp:[^\>]+>)|(<asp:[^\>]+\/>)/gi ) ;   // ASP.Net style tags <asp:control>
+@@ -103,7 +105,7 @@
+         ['OrderedList','UnorderedList','Outdent','Indent'],
+         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyFull','TextColor','BGColor'],
+         ['Link','Unlink','Anchor'],
+-        ['Image','Flash','Table','Rule','Smiley','SpecialChar'],['Style'],
++        ['Kaltura','Image','Flash','Table','Rule','Smiley','SpecialChar'],['Style'],
+         ['FontFormat','FontName','FontSize'],
+         ['About']
+ ] ;
+Index: reference/library/src/webapp/editor/FCKeditor/fckconfig.js
+===================================================================
+--- reference/library/src/webapp/editor/FCKeditor/fckconfig.js  (revision 75687)
++++ reference/library/src/webapp/editor/FCKeditor/fckconfig.js  (working copy)
+@@ -198,7 +198,7 @@
+ FCKConfig.RemoveFormatTags = 'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var' ;
+ 
+ // Attributes that will be removed
+-FCKConfig.RemoveAttributes = 'class,style,lang,width,height,align,hspace,valign' ;
++FCKConfig.RemoveAttributes = 'style,lang,width,height,align,hspace,valign' ;
+ 
+ FCKConfig.CustomStyles =
+ {

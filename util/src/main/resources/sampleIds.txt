@@ -1,0 +1,2 @@
+-- Assuming a simple text file of ids separated by a comma. The first being the old id, the second the replacement (new) id
+0_qxoyzq71,newId

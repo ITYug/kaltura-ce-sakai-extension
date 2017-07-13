@@ -1,0 +1,41 @@
+These steps describe how to modify Sakai so the FCK editor will work with the Kaltura Media Gallery.
+
+NOTE: there are also patch files for sakai 2.6 and 2.7 which will do steps 2-4 for you (you still have to do step 1 and step 5)
+
+1. Copy the "kaltura" directory to 
+{SAKAI_ROOT}/reference/library/src/webapp/editor/FCKeditor/editor/plugins/kaltura
+Example:
+cp -R kaltura_tool/fckeditor/kaltura reference/library/src/webapp/editor/FCKeditor/editor/plugins
+
+2. Add the following line to {SAKAI_ROOT}/reference/library/src/webapp/editor/FCKeditor/config.js (around line 56):
+
+FCKConfig.Plugins.Add( 'kaltura' );
+
+and then edit the FCKConfig.ToolbarSets["Default"] to include the 'Kaltura' plugin (around like 108):
+
+        ['Kaltura','Image','Flash','Table','Rule','Smiley','SpecialChar'],['Style'],
+
+NOTE: you should change this config anywhere you see this text:
+
+	"['Image',..."  =>  "['Kaltura','Image',..."
+
+3. In line 201 of {SAKAI_ROOT}/reference/library/src/webapp/editor/FCKeditor/fckconfig.js,
+remove the string "class":
+
+FCKConfig.RemoveAttributes = 'style,lang,width,height,align,hspace,valign' ;
+
+
+4. Add the following script to {SAKAI_ROOT}/portal/portal-render-engine-impl/pack/src/webapp/vm/defaultskin/includeStandardHead.vm (around line 49):
+
+<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+
+5. Add the following script to {SAKAI_ROOT}/portal/portal-render-engine-impl/pack/src/webapp/vm/neoskin/includeStandardHead.vm (around line 88):
+
+<script type="text/javascript" language="JavaScript" src="/kaltura/javascript/kaltura-display.js"></script>
+
+
+6. Re-deploy the reference and portal projects.
+
+mvn clean install sakai:deploy -f reference/pom.xml
+mvn clean install sakai:deploy -f portal/pom.xml
+

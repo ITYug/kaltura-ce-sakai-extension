@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.sakaiproject</groupId>
+  <artifactId>kaltura-util</artifactId>
+  <name>Sakai Kaltura Integration Util (plugin/tool)</name>
+  <description>This is a utility for changing the ids stored in Kaltura 1.x plugin db tables. </description>
+  <organization>
+    <name>Unicon</name>
+    <url>http://unicon.net/</url>
+  </organization>
+  <packaging>jar</packaging>
+  <version>1.0</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>3.2.3.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>3.2.3.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.25</version>
+    </dependency>    
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+          <executions>
+            <execution>
+              <phase>install</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+            <configuration>
+              <tasks>
+                 <move file="${project.build.directory}/${artifactId}-${version}.jar" todir="${project.build.directory}/lib"/>
+                 <copy file="${basedir}/src/main/resources/util.xml" todir="${project.build.directory}"/>
+                 <copy file="${basedir}/src/main/resources/runme.sh" todir="${project.build.directory}"/>
+                 <copy file="${basedir}/src/main/resources/runme.bat" todir="${project.build.directory}"/>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build> 
+  <licenses>
+    <license>
+      <name>ECL 2.0</name>
+      <distribution>repo</distribution>
+      <url>http://www.osedu.org/licenses/ECL-2.0/</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:svn:https://source.sakaiproject.org/svn/msub/unicon.net/kaltura/trunk</connection>
+    <developerConnection>scm:svn:https://source.sakaiproject.org/svn/msub/unicon.net/kaltura/trunk</developerConnection>
+    <url>https://source.sakaiproject.org/viewsvn/msub/unicon.net/kaltura/trunk</url>
+  </scm>
+
+  <distributionManagement>
+    <repository>
+      <id>Sakai-Maven2</id>
+      <name>Sakaiproject Maven 2 repository</name>
+      <url>dav:https://source.sakaiproject.org/maven2</url>
+    </repository>
+    <site>
+      <id>local site</id>
+      <url>file:/tmp/kaltura/site/</url>
+    </site>
+  </distributionManagement>
+
+  <developers>
+    <developer>
+      <id>chasegawa@unicon.net</id>
+      <name>Charles Hasegawa</name>
+      <email>chasegawa@unicon.net</email>
+      <timezone>-7</timezone>
+    </developer>
+  </developers>
+
+</project>
